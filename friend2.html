@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Bestie Chui Mui</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        padding: 20px;
+    }
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 350px;
+        position: relative;
+        z-index: 999;
+    }
+    h1 { color: #ff4d6d; font-size: 32px; margin: 10px 0; }
+    h2 { color: #ff4d6d; font-size: 22px; }
+    .emoji { font-size: 60px; animation: float 2s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform: translateY(0);} 50%{transform: translateY(-10px);} }
+    
+    button {
+        background: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        font-size: 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 10px 5px;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+    button:hover { transform: scale(1.1); background: #ff758f; }
+    
+    /* Dono message ke liye same class */
+    .message-box {
+        display: none;
+        margin-top: 25px;
+        font-size: 17px;
+        color: #333;
+        text-align: left;
+        background: #fff0f5;
+        padding: 15px;
+        border-radius: 15px;
+        border-left: 4px solid #ff4d6d;
+        animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn { from{opacity:0; transform: translateY(20px);} to{opacity:1; transform: translateY(0);} }
+    
+    .heart {
+        position: fixed; /* absolute se fixed kiya taaki poori screen pe gire */
+        color: #ff4d6d;
+        animation: fall 3s linear forwards;
+        z-index: 1;
+        pointer-events: none;
+    }
+    @keyframes fall {
+        0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji">👫💛</div>
+        <h1>Happy Friendship Day!</h1>
+        <p>To my most favourite person🤗</p>
+        
+        <!-- Button 1 -->
+        <button onclick="showMessage('msg1')">Click Here❤️</button>
+        
+        <!-- Button 2 - NAYA BUTTON -->
+        <button onclick="showMessage('msg2')">Click Here ❤️</button>
+        
+        <!-- Message 1 -->
+        <div id="msg1" class="message-box">
+            <h2>To my Bestfriend... ✨</h2>
+            <p>You are my diary, my therapist, my safe place and my biggest supporter - all in one.
+We don’t talk every day, but the bond never fades. The bond is that strong.
+Thanks for all memories,the secrets and being my bestfriend .
+
+Happy Friendship Day to the person who makes my life 100x better 
+Love you, my bestfriend forever ❤️
+Thank you for coming into my life, chui mui 💖</p>
+            
+            <b>Love you yaar! ❤️</b></p>
+        </div>
+
+        <!-- Message 2 - NAYA MESSAGE for Chui Mui -->
+        <div id="msg2" class="message-box">
+            <h2>To my Chui Mui 💌</h2>
+            <p>Duniya kehti hai "Backend" wale "Frontend" nhi dekhte...<br>
+            Par jab Frontend App jaisa ho 😍<br>
+            Toh server down 📴 hona manzoor hai!</p>
+            <p><b>Error 143: Too Handsome to handle</b> 🥰❤️</p>
+            <p>Thank you for coming into my life, <b>chui mui</b> ❤️</p>
+        </div>
+    </div>
+
+<script>
+function showMessage(id){
+    // pehle dono band karo
+    document.getElementById("msg1").style.display = "none";
+    document.getElementById("msg2").style.display = "none";
+    
+    // jispe click kiya wo kholo
+    document.getElementById(id).style.display = "block";
+    
+    // Dil girane wala effect
+    for(let i=0; i<25; i++){
+        setTimeout(()=>{
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 10 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(()=>heart.remove(), 3000);
+        }, i*100);
+    }
+}
+</script>
+</body>
+</html>
